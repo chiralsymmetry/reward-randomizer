@@ -1,0 +1,35 @@
+name: reward_randomizer
+description: Use intermittent rewards to supercharge habit building.
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.0.2 <4.0.0'
+
+dependencies:
+  auto_size_text: ^3.0.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_riverpod: ^2.3.6
+  font_awesome_flutter: ^10.4.0
+  font_awesome_metadata: ^1.0.1
+  intl: ^0.18.0
+  path: ^1.8.3
+  shared_preferences: ^2.1.1
+  sqflite: ^2.2.8+4
+  url_launcher: ^6.1.11
+  uuid: ^3.0.7
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - THIRD_PARTY_LICENSES.md
+    - assets/reward_randomizer_icon.png
