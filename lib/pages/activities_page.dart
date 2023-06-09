@@ -178,7 +178,7 @@ class ActivitiesPage extends ConsumerWidget {
         child: Column(
           children: [
             Reward(),
-            ActivitiesList(),
+            Expanded(child: ActivitiesList()),
           ],
         ),
       ),

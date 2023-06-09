@@ -125,6 +125,8 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: DropdownButtonFormField(
+                            isExpanded: true,
+                            isDense: false,
                             value: preferredDarkTheme,
                             items: [
                               for (final theme in DarkTheme.values)
@@ -134,7 +136,9 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                                     children: [
                                       theme.icon,
                                       const SizedBox(width: 8),
-                                      Text(_getDarkThemeString(theme, ctx)),
+                                      Expanded(
+                                          child: Text(
+                                              _getDarkThemeString(theme, ctx))),
                                     ],
                                   ),
                                 )
@@ -158,6 +162,8 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                         const SizedBox(width: 8),
                         Expanded(
                           child: DropdownButtonFormField(
+                            isExpanded: true,
+                            isDense: false,
                             value: preferredLanguage,
                             items: [
                               for (final l in Language.values)
@@ -176,10 +182,12 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                                           ],
                                         ),
                                       const SizedBox(width: 8),
-                                      Text(l == Language.system
-                                          ? AppLocalizations.of(ctx)!
-                                              .pagePreferencesLanguageDefault
-                                          : l.nameInLanguage),
+                                      Expanded(
+                                        child: Text(l == Language.system
+                                            ? AppLocalizations.of(ctx)!
+                                                .pagePreferencesLanguageDefault
+                                            : l.nameInLanguage),
+                                      ),
                                     ],
                                   ),
                                 )

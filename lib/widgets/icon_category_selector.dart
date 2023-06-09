@@ -61,7 +61,7 @@ class IconCategorySelector extends ConsumerWidget {
                     )
                   else
                     const SizedBox(width: 18),
-                  Text(labels[category]!),
+                  Expanded(child: Text(labels[category]!)),
                 ],
               ),
             )
