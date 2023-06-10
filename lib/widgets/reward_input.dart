@@ -29,9 +29,15 @@ class RewardInputState extends State<RewardInput> {
           (reward) => Row(
             children: [
               Expanded(
-                child: Text(reward),
+                child: Text(
+                  reward,
+                  semanticsLabel: AppLocalizations.of(context)!
+                      .rewardInputAccessibilitySingleReward(reward),
+                ),
               ),
               IconButton(
+                tooltip: AppLocalizations.of(context)!
+                    .rewardInputAccessibilityDelete,
                 onPressed: () {
                   setState(() {
                     widget.rewards.remove(reward);
@@ -55,6 +61,8 @@ class RewardInputState extends State<RewardInput> {
               ),
             ),
             IconButton(
+              tooltip:
+                  AppLocalizations.of(context)!.rewardInputAccessibilityAdd,
               onPressed: () {
                 setState(() {
                   widget.rewards.add(_controller.text);

@@ -14,6 +14,8 @@
     "pageActivitiesOrderLabelDescending": "Efter etikett (Z-A)",
     "pageActivitiesOrderUserDefined": "Anpassad",
     "pageActivitiesOrderRandom": "Slumpmässig",
+    "pageActivitiesAccessibilityGoToActivityPage": "Gå till sidan för att lägga till aktivitet.",
+    "pageActivitiesAccessibilitySortMenu": "Visa menyn för att sortera aktiviteter.",
 
     "pageAddActivitiesAppBarTitleAdd": "Lägg till aktivitet",
     "pageAddActivitiesAppBarTitleEdit": "Redigera aktivitet",
@@ -33,6 +35,8 @@
     "pageAddActivitiesDeleteDialogText": "Vill du verkligen ta bort denna aktivitet?",
     "pageAddActivitiesDeleteDialogCancel": "Avbryt",
     "pageAddActivitiesDeleteDialogConfirm": "Ta bort",
+    "pageAddActivitiesAccessibilityDelete": "Ta bort aktivitet.",
+    "pageAddActivitiesAccessibilitySave": "Spara aktivitet.",
 
     "pagePreferencesAppBarTitle": "Inställningar",
     "pagePreferencesSecondsSuffix": "sekunder",
@@ -41,6 +45,10 @@
     "pagePreferencesDarkModeDark": "Alltid mörkt läge",
     "pagePreferencesLanguageDefault": "Använd systemets språkinställning",
     "pagePreferencesFailureToLoad": "Fel",
+    "pagePreferencesAccessibilitySave": "Spara ändringar.",
+    "pagePreferencesAccessibilityCountdown": "Nedräkningstid i sekunder.",
+    "pagePreferencesAccessibilityDarkTheme": "Gardinmeny för mörkt tema.",
+    "pagePreferencesAccessibilityLanguage": "Gardinmeny för språk.",
 
     "pageAboutAppBarTitle": "Om appen",
     "pageAboutAppDescription": "Reward Randomizer är en lättviktig app som hjälper dig att bygga upp och förstärka vanor med hjälp av ett intermittent belöningssystem. Genom att utnyttja kraften i intermittenta belöningar motiverar och uppmuntrar appen dig att utföra olika aktiviteter och skapa positiva vanor.",
@@ -53,6 +61,18 @@
     "pageAboutThirdPartyLicensesExplanation": "Denna app använder följande tredjepartsmjukvara:",
     "pageAboutProcessingLoading": "Laddar...",
     "pageAboutProcessingError": "Fel uppstod vid behandling av licensfil",
+
+    "iconSelectorAccessibilityExplanation": "Meny för att välja ikon.",
+    "iconSelectorAccessibilityClearSearch": "Rensa söktermer.",
+
+    "rewardInputAccessibilitySingleReward": "Belöningstext: {reward}.",
+    "@rewardInputAccessibilitySingleReward": {
+        "placeholders": {
+            "reward": {}
+        }
+    },
+    "rewardInputAccessibilityDelete": "Ta bort belöning.",
+    "rewardInputAccessibilityAdd": "Lägg till belöning.",
 
     "defaultRewards": "Bra jobbat!|Fortsätt så!|Toppen!|Härligt!|🥳|🎉|👍",
 

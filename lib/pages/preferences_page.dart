@@ -54,6 +54,8 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
         backgroundColor: Theme.of(context).colorScheme.background,
         actions: [
           IconButton(
+            tooltip:
+                AppLocalizations.of(context)!.pagePreferencesAccessibilitySave,
             icon: AppIcons.settingsSave,
             onPressed: saveForm,
           ),
@@ -92,29 +94,33 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                         AppIcons.settingDelay,
                         const SizedBox(width: 8),
                         Expanded(
-                          child: TextFormField(
-                            keyboardType:
-                                const TextInputType.numberWithOptions(),
-                            initialValue: countdownDurationString,
-                            decoration: InputDecoration(
-                              suffix: Text(AppLocalizations.of(ctx)!
-                                  .pagePreferencesSecondsSuffix),
+                          child: Semantics(
+                            label: AppLocalizations.of(context)!
+                                .pagePreferencesAccessibilitySave,
+                            child: TextFormField(
+                              keyboardType:
+                                  const TextInputType.numberWithOptions(),
+                              initialValue: countdownDurationString,
+                              decoration: InputDecoration(
+                                suffix: Text(AppLocalizations.of(ctx)!
+                                    .pagePreferencesSecondsSuffix),
+                              ),
+                              onSaved: (newValue) {
+                                if (newValue != null) {
+                                  double value;
+                                  try {
+                                    value =
+                                        numberFormat.parse(newValue).toDouble();
+                                  } on FormatException {
+                                    value = kCountdownDuration;
+                                  }
+                                  if (value < 0) {
+                                    value = kCountdownDuration;
+                                  }
+                                  preferences.setCountdownDuration(value);
+                                }
+                              },
                             ),
-                            onSaved: (newValue) {
-                              if (newValue != null) {
-                                double value;
-                                try {
-                                  value =
-                                      numberFormat.parse(newValue).toDouble();
-                                } on FormatException {
-                                  value = kCountdownDuration;
-                                }
-                                if (value < 0) {
-                                  value = kCountdownDuration;
-                                }
-                                preferences.setCountdownDuration(value);
-                              }
-                            },
                           ),
                         ),
                       ],
@@ -124,34 +130,38 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                         AppIcons.settingDarkMode,
                         const SizedBox(width: 8),
                         Expanded(
-                          child: DropdownButtonFormField(
-                            isExpanded: true,
-                            isDense: false,
-                            value: preferredDarkTheme,
-                            items: [
-                              for (final theme in DarkTheme.values)
-                                DropdownMenuItem(
-                                  value: theme,
-                                  child: Row(
-                                    children: [
-                                      theme.icon,
-                                      const SizedBox(width: 8),
-                                      Expanded(
+                          child: Semantics(
+                            label: AppLocalizations.of(context)!
+                                .pagePreferencesAccessibilityDarkTheme,
+                            child: DropdownButtonFormField(
+                              isExpanded: true,
+                              isDense: false,
+                              value: preferredDarkTheme,
+                              items: [
+                                for (final theme in DarkTheme.values)
+                                  DropdownMenuItem(
+                                    value: theme,
+                                    child: Row(
+                                      children: [
+                                        theme.icon,
+                                        const SizedBox(width: 8),
+                                        Expanded(
                                             child: Text(_getDarkThemeString(
                                                 theme, ctx))),
-                                    ],
-                                  ),
-                                )
-                            ],
-                            onChanged: (_) {},
-                            onSaved: (newValue) {
-                              if (newValue != null) {
-                                preferences.setDarkTheme(newValue);
-                                ref
-                                    .read(darkThemeProvider.notifier)
-                                    .setTheme(newValue);
-                              }
-                            },
+                                      ],
+                                    ),
+                                  )
+                              ],
+                              onChanged: (_) {},
+                              onSaved: (newValue) {
+                                if (newValue != null) {
+                                  preferences.setDarkTheme(newValue);
+                                  ref
+                                      .read(darkThemeProvider.notifier)
+                                      .setTheme(newValue);
+                                }
+                              },
+                            ),
                           ),
                         ),
                       ],
@@ -161,50 +171,54 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                         AppIcons.settingLanguage,
                         const SizedBox(width: 8),
                         Expanded(
-                          child: DropdownButtonFormField(
-                            isExpanded: true,
-                            isDense: false,
-                            value: preferredLanguage,
-                            items: [
-                              for (final l in Language.values)
-                                DropdownMenuItem(
-                                  value: l,
-                                  child: Row(
-                                    children: [
-                                      if (l.flag.isEmpty)
-                                        AppIcons.languageSystem
-                                      else
-                                        Row(
-                                          children: [
-                                            const SizedBox(width: 2),
-                                            Text(l.flag),
-                                            const SizedBox(width: 1),
-                                          ],
+                          child: Semantics(
+                            label: AppLocalizations.of(context)!
+                                .pagePreferencesAccessibilityLanguage,
+                            child: DropdownButtonFormField(
+                              isExpanded: true,
+                              isDense: false,
+                              value: preferredLanguage,
+                              items: [
+                                for (final l in Language.values)
+                                  DropdownMenuItem(
+                                    value: l,
+                                    child: Row(
+                                      children: [
+                                        if (l.flag.isEmpty)
+                                          AppIcons.languageSystem
+                                        else
+                                          Row(
+                                            children: [
+                                              const SizedBox(width: 2),
+                                              Text(l.flag),
+                                              const SizedBox(width: 1),
+                                            ],
+                                          ),
+                                        const SizedBox(width: 8),
+                                        Expanded(
+                                          child: Text(l == Language.system
+                                              ? AppLocalizations.of(ctx)!
+                                                  .pagePreferencesLanguageDefault
+                                              : l.nameInLanguage),
                                         ),
-                                      const SizedBox(width: 8),
-                                      Expanded(
-                                        child: Text(l == Language.system
-                                            ? AppLocalizations.of(ctx)!
-                                                .pagePreferencesLanguageDefault
-                                            : l.nameInLanguage),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                            ],
-                            onChanged: (_) {},
-                            onSaved: (newValue) {
-                              if (newValue != null) {
-                                preferences.setLanguage(newValue);
-                                final locale = ref.read(localeProvider);
-                                if (newValue.localeCode !=
-                                    locale?.languageCode) {
-                                  ref
-                                      .read(localeProvider.notifier)
-                                      .setLocale(Locale(newValue.localeCode));
+                                      ],
+                                    ),
+                                  )
+                              ],
+                              onChanged: (_) {},
+                              onSaved: (newValue) {
+                                if (newValue != null) {
+                                  preferences.setLanguage(newValue);
+                                  final locale = ref.read(localeProvider);
+                                  if (newValue.localeCode !=
+                                      locale?.languageCode) {
+                                    ref
+                                        .read(localeProvider.notifier)
+                                        .setLocale(Locale(newValue.localeCode));
+                                  }
                                 }
-                              }
-                            },
+                              },
+                            ),
                           ),
                         ),
                       ],

@@ -14,6 +14,8 @@
     "pageActivitiesOrderLabelDescending": "By Label (Z-A)",
     "pageActivitiesOrderUserDefined": "Customized",
     "pageActivitiesOrderRandom": "Random",
+    "pageActivitiesAccessibilityGoToActivityPage": "Go to add activity page.",
+    "pageActivitiesAccessibilitySortMenu": "Show menu for sorting activities.",
 
     "pageAddActivitiesAppBarTitleAdd": "Add Activity",
     "pageAddActivitiesAppBarTitleEdit": "Edit Activity",
@@ -47,6 +49,8 @@
     "pageAddActivitiesDeleteDialogText": "Are you sure you want to delete this activity?",
     "pageAddActivitiesDeleteDialogCancel": "Cancel",
     "pageAddActivitiesDeleteDialogConfirm": "Delete",
+    "pageAddActivitiesAccessibilityDelete": "Delete activity.",
+    "pageAddActivitiesAccessibilitySave": "Save activity.",
 
     "pagePreferencesAppBarTitle": "Preferences",
     "pagePreferencesSecondsSuffix": "seconds",
@@ -55,6 +59,10 @@
     "pagePreferencesDarkModeDark": "Always Dark Mode",
     "pagePreferencesLanguageDefault": "Use System Language",
     "pagePreferencesFailureToLoad": "Error",
+    "pagePreferencesAccessibilitySave": "Accept changes.",
+    "pagePreferencesAccessibilityCountdown": "Countdown duration in seconds.",
+    "pagePreferencesAccessibilityDarkTheme": "Dark theme dropdown menu.",
+    "pagePreferencesAccessibilityLanguage": "Language dropdown menu.",
 
     "pageAboutAppBarTitle": "About",
     "pageAboutAppDescription": "Reward Randomizer is a light-weight app designed to help you build and reinforce habits using an intermittent reward system. By harnessing the power of intermittent rewards, the app motivates and encourages you to engage in various activities and create positive habits.",
@@ -67,6 +75,18 @@
     "pageAboutThirdPartyLicensesExplanation": "This app uses the following third party software:",
     "pageAboutProcessingLoading": "Loading...",
     "pageAboutProcessingError": "Error processing license file",
+
+    "iconSelectorAccessibilityExplanation": "Menu for selecting icon.",
+    "iconSelectorAccessibilityClearSearch": "Clear search terms.",
+
+    "rewardInputAccessibilitySingleReward": "Reward text: {reward}.",
+    "@rewardInputAccessibilitySingleReward": {
+        "placeholders": {
+            "reward": {}
+        }
+    },
+    "rewardInputAccessibilityDelete": "Delete reward.",
+    "rewardInputAccessibilityAdd": "Add reward.",
 
     "defaultRewards": "Good job!|Keep it up!|Nice!|Awesome!|🥳|🎉|👍",
     "@defaultRewards": {

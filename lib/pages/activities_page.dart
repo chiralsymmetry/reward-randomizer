@@ -63,6 +63,8 @@ class ActivitiesPage extends ConsumerWidget {
         backgroundColor: Theme.of(context).colorScheme.background,
         actions: [
           PopupMenuButton(
+            tooltip: AppLocalizations.of(context)!
+                .pageActivitiesAccessibilitySortMenu,
             icon: AppIcons.activitiesDropdownSort,
             itemBuilder: (context) {
               return [
@@ -83,6 +85,8 @@ class ActivitiesPage extends ConsumerWidget {
             },
           ),
           IconButton(
+            tooltip: AppLocalizations.of(context)!
+                .pageActivitiesAccessibilityGoToActivityPage,
             icon: AppIcons.activityAdd,
             onPressed: () {
               ref.read(iconSearchProvider.notifier).setSearchTerms("");
@@ -101,56 +105,56 @@ class ActivitiesPage extends ConsumerWidget {
         ],
       ),
       drawer: Drawer(
-              child: ListView(
-                children: [
-                  DrawerHeader(
-                    decoration: BoxDecoration(
-                        image: const DecorationImage(
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                  image: const DecorationImage(
                     image: AssetImage("assets/reward_randomizer_icon.png"),
-                          fit: BoxFit.none,
-                          scale: 5.0,
-                          opacity: 0.5,
-                          alignment: Alignment.topLeft,
-                        ),
-                        gradient: LinearGradient(
-                          colors: [
-                            Theme.of(context).colorScheme.background,
-                            Theme.of(context).colorScheme.primaryContainer,
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        )),
-                    child: Container(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        AppLocalizations.of(context)!.pageActivitiesAppBarTitle,
-                        style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                          fontSize: 24,
-                        ),
-                      ),
-                    ),
+                    fit: BoxFit.none,
+                    scale: 5.0,
+                    opacity: 0.5,
+                    alignment: Alignment.topLeft,
                   ),
-                  ListTile(
-                    leading: AppIcons.pageActivities,
+                  gradient: LinearGradient(
+                    colors: [
+                      Theme.of(context).colorScheme.background,
+                      Theme.of(context).colorScheme.primaryContainer,
+                    ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  )),
+              child: Container(
+                alignment: Alignment.bottomLeft,
+                child: Text(
+                  AppLocalizations.of(context)!.pageActivitiesAppBarTitle,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: AppIcons.pageActivities,
               title: Text(
                   AppLocalizations.of(context)!.pageActivitiesDrawerActivities),
-                    onTap: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  ListTile(
-                    leading: AppIcons.settingsPage,
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            ListTile(
+              leading: AppIcons.settingsPage,
               title: Text(
                   AppLocalizations.of(context)!.pagePreferencesAppBarTitle),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (ctx) =>
-                              const LocalizedWidget(child: PreferencesPage()),
-                        ),
-                      );
-                    },
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) =>
+                        const LocalizedWidget(child: PreferencesPage()),
+                  ),
+                );
+              },
             ),
             ListTile(
               leading: AppIcons.pageAbout,

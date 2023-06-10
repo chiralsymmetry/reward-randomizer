@@ -132,107 +132,111 @@ class _AddActivityPageState extends ConsumerState<AddActivityPage> {
         actions: [
           if (widget.activity != null)
             IconButton(
+              tooltip: AppLocalizations.of(context)!
+                  .pageAddActivitiesAccessibilityDelete,
               icon: AppIcons.activityDelete,
               onPressed: deleteActivity,
             ),
           IconButton(
+            tooltip: AppLocalizations.of(context)!
+                .pageAddActivitiesAccessibilitySave,
             icon: AppIcons.activitySave,
             onPressed: saveActivity,
           ),
         ],
       ),
       body: DefaultPage(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(16),
-            child: Form(
-              key: _formKey,
-              autovalidateMode: AutovalidateMode.always,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Padding(
-                        padding:
-                            EdgeInsets.only(left: 16.0, right: 32.0, top: 8.0),
-                        child: IconSelector(),
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          initialValue: _label,
-                          onSaved: (newValue) {
-                            _label = newValue ?? "";
-                          },
-                          decoration: InputDecoration(
-                            labelText: AppLocalizations.of(context)!
-                                .pageAddActivitiesLabelHint,
-                          ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Form(
+            key: _formKey,
+            autovalidateMode: AutovalidateMode.always,
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    const Padding(
+                      padding:
+                          EdgeInsets.only(left: 16.0, right: 32.0, top: 8.0),
+                      child: IconSelector(),
+                    ),
+                    Expanded(
+                      child: TextFormField(
+                        initialValue: _label,
+                        onSaved: (newValue) {
+                          _label = newValue ?? "";
+                        },
+                        decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!
+                              .pageAddActivitiesLabelHint,
                         ),
                       ),
-                    ],
-                  ),
-                  TextFormField(
-                    initialValue: _question,
-                    onSaved: (newValue) {
-                      _question = newValue ?? "";
-                    },
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!
-                          .pageAddActivitiesQuestionHint,
                     ),
+                  ],
+                ),
+                TextFormField(
+                  initialValue: _question,
+                  onSaved: (newValue) {
+                    _question = newValue ?? "";
+                  },
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!
+                        .pageAddActivitiesQuestionHint,
                   ),
-                  TextFormField(
-                    initialValue: _answer,
-                    onSaved: (newValue) {
-                      if (newValue != null && newValue.isEmpty) {
-                        _answer = null;
-                      } else {
-                        _answer = newValue;
-                      }
-                    },
-                    decoration: InputDecoration(
-                      labelText: AppLocalizations.of(context)!
-                          .pageAddActivitiesAnswerHint,
-                      hintText: AppLocalizations.of(context)!
-                          .pageAddActivitiesAnswerDefaultYes,
-                    ),
+                ),
+                TextFormField(
+                  initialValue: _answer,
+                  onSaved: (newValue) {
+                    if (newValue != null && newValue.isEmpty) {
+                      _answer = null;
+                    } else {
+                      _answer = newValue;
+                    }
+                  },
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context)!
+                        .pageAddActivitiesAnswerHint,
+                    hintText: AppLocalizations.of(context)!
+                        .pageAddActivitiesAnswerDefaultYes,
                   ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                          initialValue: _reciprocal?.toString(),
-                          onSaved: (newValue) {
-                            _reciprocal = int.tryParse(newValue ?? "");
-                          },
-                          keyboardType: const TextInputType.numberWithOptions(
-                              decimal: false, signed: false),
-                          decoration: InputDecoration(
-                            labelText: AppLocalizations.of(context)!
-                                .pageAddActivitiesChanceHint,
-                            hintText: kDefaultReciprocal.toString(),
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              _setChanceString(int.tryParse(value));
-                            });
-                          },
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      child: TextFormField(
+                        initialValue: _reciprocal?.toString(),
+                        onSaved: (newValue) {
+                          _reciprocal = int.tryParse(newValue ?? "");
+                        },
+                        keyboardType: const TextInputType.numberWithOptions(
+                            decimal: false, signed: false),
+                        decoration: InputDecoration(
+                          labelText: AppLocalizations.of(context)!
+                              .pageAddActivitiesChanceHint,
+                          hintText: kDefaultReciprocal.toString(),
                         ),
+                        onChanged: (value) {
+                          setState(() {
+                            _setChanceString(int.tryParse(value));
+                          });
+                        },
                       ),
-                      Padding(
+                    ),
+                    Padding(
                       padding: const EdgeInsets.only(bottom: 12.0, left: 12.0),
-                        child: Text(_chanceString),
-                      ),
-                    ],
-                  ),
-                  RewardInput(
-                      rewards: _rewards,
-                      onChanged: (s) {
-                        _rewards = s;
-                      }),
-                ],
-              ),
+                      child: Text(_chanceString),
+                    ),
+                  ],
+                ),
+                RewardInput(
+                    rewards: _rewards,
+                    onChanged: (s) {
+                      _rewards = s;
+                    }),
+              ],
             ),
+          ),
         ),
       ),
     );

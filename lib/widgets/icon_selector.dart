@@ -8,6 +8,7 @@ import 'package:reward_randomizer/widgets/icon_category_selector.dart';
 import 'package:reward_randomizer/widgets/icon_search_input.dart';
 import 'package:reward_randomizer/widgets/icon_grid.dart';
 import 'package:reward_randomizer/widgets/localized_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 const double _popupMenuButtonWidth = 240.0;
 const double _popupMenuButtonHeight = 360.0;
@@ -25,6 +26,8 @@ class _IconSelectorState extends ConsumerState<IconSelector> {
   Widget build(BuildContext context) {
     final selectedIcon = ref.watch(selectedIconProvider);
     return PopupMenuButton(
+      tooltip:
+          AppLocalizations.of(context)!.iconSelectorAccessibilityExplanation,
       constraints: const BoxConstraints.expand(
         width: _popupMenuButtonWidth,
         height: _popupMenuButtonHeight,
@@ -32,6 +35,7 @@ class _IconSelectorState extends ConsumerState<IconSelector> {
       icon: selectedIcon,
       itemBuilder: (context) {
         return [
+          // TODO: It seems that using PopupMenuItem as a container for other widgets is a bit problematic for screen readers, so perhaps an alternative should be found.
           PopupMenuItem(
             enabled: false,
             child: Column(
@@ -40,6 +44,8 @@ class _IconSelectorState extends ConsumerState<IconSelector> {
                   children: [
                     Expanded(child: LocalizedWidget(child: IconSearchInput())),
                     IconButton(
+                      tooltip: AppLocalizations.of(context)!
+                          .iconSelectorAccessibilityClearSearch,
                       icon: const Icon(Icons.clear),
                       onPressed: () {
                         ref
