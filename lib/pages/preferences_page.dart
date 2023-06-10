@@ -137,8 +137,8 @@ class _PreferencesPageState extends ConsumerState<PreferencesPage> {
                                       theme.icon,
                                       const SizedBox(width: 8),
                                       Expanded(
-                                          child: Text(
-                                              _getDarkThemeString(theme, ctx))),
+                                            child: Text(_getDarkThemeString(
+                                                theme, ctx))),
                                     ],
                                   ),
                                 )

@@ -101,16 +101,12 @@ class ActivitiesPage extends ConsumerWidget {
         ],
       ),
       drawer: Drawer(
-        child: Column(
-          children: [
-            Expanded(
               child: ListView(
                 children: [
                   DrawerHeader(
                     decoration: BoxDecoration(
                         image: const DecorationImage(
-                          image:
-                              AssetImage("assets/reward_randomizer_icon.png"),
+                    image: AssetImage("assets/reward_randomizer_icon.png"),
                           fit: BoxFit.none,
                           scale: 5.0,
                           opacity: 0.5,
@@ -129,8 +125,7 @@ class ActivitiesPage extends ConsumerWidget {
                       child: Text(
                         AppLocalizations.of(context)!.pageActivitiesAppBarTitle,
                         style: TextStyle(
-                          color:
-                              Theme.of(context).colorScheme.onPrimaryContainer,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                           fontSize: 24,
                         ),
                       ),
@@ -138,16 +133,16 @@ class ActivitiesPage extends ConsumerWidget {
                   ),
                   ListTile(
                     leading: AppIcons.pageActivities,
-                    title: Text(AppLocalizations.of(context)!
-                        .pageActivitiesDrawerActivities),
+              title: Text(
+                  AppLocalizations.of(context)!.pageActivitiesDrawerActivities),
                     onTap: () {
                       Navigator.of(context).pop();
                     },
                   ),
                   ListTile(
                     leading: AppIcons.settingsPage,
-                    title: Text(AppLocalizations.of(context)!
-                        .pagePreferencesAppBarTitle),
+              title: Text(
+                  AppLocalizations.of(context)!.pagePreferencesAppBarTitle),
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
@@ -156,12 +151,8 @@ class ActivitiesPage extends ConsumerWidget {
                         ),
                       );
                     },
-                  ),
-                ],
-              ),
             ),
             ListTile(
-              contentPadding: const EdgeInsets.only(left: 16, bottom: 16),
               leading: AppIcons.pageAbout,
               title: Text(AppLocalizations.of(context)!.pageAboutAppBarTitle),
               onTap: () {

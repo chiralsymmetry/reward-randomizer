@@ -4,6 +4,7 @@ import 'package:reward_randomizer/models/activity.dart';
 import 'package:reward_randomizer/providers/activities_provider.dart';
 import 'package:reward_randomizer/providers/selected_icon_provider.dart';
 import 'package:reward_randomizer/utils/icons.dart';
+import 'package:reward_randomizer/widgets/default_page.dart';
 import 'package:reward_randomizer/widgets/icon_selector.dart';
 import 'package:reward_randomizer/widgets/reward_input.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -140,20 +141,7 @@ class _AddActivityPageState extends ConsumerState<AddActivityPage> {
           ),
         ],
       ),
-      body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Theme.of(context).colorScheme.background,
-              Theme.of(context).colorScheme.background,
-              Theme.of(context).colorScheme.background,
-              Theme.of(context).colorScheme.primaryContainer,
-            ],
-          )),
+      body: DefaultPage(
           child: SingleChildScrollView(
             padding: const EdgeInsets.all(16),
             child: Form(
@@ -232,8 +220,7 @@ class _AddActivityPageState extends ConsumerState<AddActivityPage> {
                         ),
                       ),
                       Padding(
-                        padding:
-                            const EdgeInsets.only(bottom: 12.0, left: 12.0),
+                      padding: const EdgeInsets.only(bottom: 12.0, left: 12.0),
                         child: Text(_chanceString),
                       ),
                     ],
@@ -246,7 +233,8 @@ class _AddActivityPageState extends ConsumerState<AddActivityPage> {
                 ],
               ),
             ),
-          )),
+        ),
+      ),
     );
   }
 }

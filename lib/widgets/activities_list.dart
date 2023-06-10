@@ -32,6 +32,33 @@ class _ActivitiesListState extends ConsumerState<ActivitiesList> {
   Widget build(BuildContext context) {
     List<Activity> activities = ref.watch(activitiesProvider);
 
+    void editActivity(Activity activity) {
+      ref.read(iconSearchProvider.notifier).setSearchTerms("");
+      ref.read(iconCategoryProvider.notifier).setCategory(null);
+      ref.read(iconSelectionProvider.notifier).setSearchTerms("");
+      ref.read(iconSelectionProvider.notifier).setCategory(null);
+      ref.read(selectedIconProvider.notifier).setIcon(activity.icon);
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            LocalizedWidget(child: AddActivityPage(activity: activity)),
+      ));
+    }
+
+    void activateReward(Activity activity) async {
+      ref.read(rewardProvider.notifier).setReward(activity.randomReward);
+      setState(() {
+        _waiting = true;
+      });
+      final seconds =
+          await ref.read(preferencesProvider).getCountdownDuration();
+      final milliseconds = (seconds * 1000).toInt();
+      Future.delayed(Duration(milliseconds: milliseconds), () {
+        setState(() {
+          _waiting = false;
+        });
+      });
+    }
+
     return LayoutBuilder(
       builder: (context, constraints) => ReorderableListView.builder(
         itemCount: activities.length,
@@ -42,17 +69,7 @@ class _ActivitiesListState extends ConsumerState<ActivitiesList> {
             key: Key('$index'),
             child: GestureDetector(
               onTap: () {
-                ref.read(iconSearchProvider.notifier).setSearchTerms("");
-                ref.read(iconCategoryProvider.notifier).setCategory(null);
-                ref.read(iconSelectionProvider.notifier).setSearchTerms("");
-                ref.read(iconSelectionProvider.notifier).setCategory(null);
-                ref
-                    .read(selectedIconProvider.notifier)
-                    .setIcon(currentActivity.icon);
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => LocalizedWidget(
-                      child: AddActivityPage(activity: currentActivity)),
-                ));
+                editActivity(currentActivity);
               },
               child: Row(
                 children: [
@@ -92,23 +109,8 @@ class _ActivitiesListState extends ConsumerState<ActivitiesList> {
                         ),
                         onPressed: _waiting
                             ? null
-                            : () async {
-                                ref
-                                    .read(rewardProvider.notifier)
-                                    .setReward(currentActivity.randomReward);
-                                setState(() {
-                                  _waiting = true;
-                                });
-                                final seconds = await ref
-                                    .read(preferencesProvider)
-                                    .getCountdownDuration();
-                                final milliseconds = (seconds * 1000).toInt();
-                                Future.delayed(
-                                    Duration(milliseconds: milliseconds), () {
-                                  setState(() {
-                                    _waiting = false;
-                                  });
-                                });
+                            : () {
+                                activateReward(currentActivity);
                               },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 8.0),
