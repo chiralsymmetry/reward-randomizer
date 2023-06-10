@@ -9,7 +9,6 @@ import 'package:reward_randomizer/widgets/localized_widget.dart';
 
 const _beige = Color.fromRGBO(246, 243, 223, 1.0);
 const _lightGold = Color.fromRGBO(182, 155, 0, 1.0);
-const _bronzeYellow = Color.fromRGBO(114, 97, 0, 1.0);
 final _colorScheme = ColorScheme.fromSeed(
   seedColor: _lightGold,
 ).copyWith(
@@ -19,7 +18,7 @@ final _colorSchemeDark = ColorScheme.fromSeed(
   seedColor: _lightGold,
   brightness: Brightness.dark,
 ).copyWith(
-  background: _bronzeYellow,
+  background: Colors.black,
 );
 final ThemeData _lightTheme =
     ThemeData.from(colorScheme: _colorScheme, useMaterial3: true);
