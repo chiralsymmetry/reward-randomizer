@@ -1,5 +1,9 @@
 # Reward Randomizer - Build Habits with Intermittent Rewards
 
+<p align="center">
+  <a href="https://play.google.com/store/apps/details?id=com.chiralsymmetry.reward_randomizer"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="80px"/></a>
+</p>
+
 Reward Randomizer is a light-weight Android app designed to help you build and
 reinforce habits using an intermittent reward system. By harnessing the power
 of intermittent rewards, the app motivates and encourages you to engage in
